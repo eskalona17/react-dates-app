@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
-const Formulario = () => {
+const Formulario = ({crearCita}) => {
   //crear state de citas
   const [cita, actualizarCita] = useState({
     mascota: "",
@@ -44,11 +44,19 @@ const Formulario = () => {
 
     //asignar un ID
     cita.id= uuidv4();
-    console.log(cita)
 
     //crear la cita
+    crearCita(cita)
 
     //reiniciar el form
+    actualizarCita({
+        mascota: "",
+        propietario: "",
+        fecha: "",
+        hora: "",
+        sintomas: "",
+    })
+
   };
 
   return (
